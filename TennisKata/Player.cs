@@ -10,6 +10,8 @@ namespace TennisKata
     {
         int points = 0;
 
+		const int MININUM_POINTS_TO_WIN = 3;
+
         public int Points
         {
             get { return points; }
@@ -28,9 +30,9 @@ namespace TennisKata
             this.points += 1;
         }
 
-        public bool HasMoreThanThreePoints()
+        public bool HasPointsToWin()
         {
-            return this.points > 3;
+			return this.points > MININUM_POINTS_TO_WIN;
         }
 
         

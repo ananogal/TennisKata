@@ -79,6 +79,17 @@ namespace TennisKataTests
             game.Score.Should().Be("Advantage Player2");
         }
 
+		[Test]
+		public void HaveAScoreOfDeuceWhenPlayer1WinsAndPlayer2WasInAdvantage()
+		{
+			SetDeuceScore();
+			game.AddPointTo(player2);
+
+			game.AddPointTo(player1);
+
+			game.Score.Should().Be("Deuce");
+		}
+
         [Test]
         public void ShouldDeclarePlayer1AsAWinnerWhenScoreIsThirtyFortyAndPlayer1ScoresOnePoint()
         {

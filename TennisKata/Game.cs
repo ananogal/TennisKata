@@ -7,8 +7,6 @@ namespace TennisKata
         private Player player1;
         private Player player2;
 
-        string score;
-
         Dictionary<int, string> ScoreValues = new Dictionary<int, string>
         {
             {0, "0"},
@@ -18,7 +16,9 @@ namespace TennisKata
         };
 
         const int ADVANTAGE_POINTS_TO_WIN = 2;
+		const int MININUM_POINTS_TO_WIN = 3;
 
+		string score;
         public string Score
         {
             get { return score; }
@@ -48,7 +48,7 @@ namespace TennisKata
 
         private void CalculateScore()
         {
-            Player winner = GetWinner();
+            var winner = GetWinner();
             if (winner != null)
             {
                 this.score = "Game for " + winner.Name;
@@ -101,12 +101,12 @@ namespace TennisKata
 
         private bool IsGameDeuce()
         {
-            return player1.Points >= 3 && player1.Points == player2.Points;
+			return player1.Points >= MININUM_POINTS_TO_WIN && player1.Points == player2.Points;
         }
 
         private bool IsGameInAdvantage()
         {
-            return player1.HasMoreThanThreePoints() || player2.HasMoreThanThreePoints();
+            return player1.HasPointsToWin() || player2.HasPointsToWin();
         }
     }
 }

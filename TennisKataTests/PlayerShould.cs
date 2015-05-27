@@ -42,7 +42,7 @@ namespace TennisKataTests
             player.AddPoint();
             player.AddPoint();
 
-            player.HasMoreThanThreePoints().Should().Be(true);
+            player.HasPointsToWin().Should().Be(true);
         }
     }
 }
