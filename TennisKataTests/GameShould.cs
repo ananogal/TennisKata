@@ -20,7 +20,7 @@ namespace TennisKataTests
         }
 
         [Test]
-        public void BeStartedStartWillAScoreOfZero()
+        public void BeStartedWithAScoreOfZero()
         {
             game.Score.Should().Be("0:0");
         }
@@ -62,7 +62,7 @@ namespace TennisKataTests
         }
 
         [Test]
-        public void HaveAScoreOfAdvantajePlayer1WhenPlayer1WinsAfterDeuce()
+        public void HaveAScoreOfAdvantagePlayer1WhenPlayer1WinsAfterDeuce()
         {
             SetDeuceScore();
             game.AddPointTo(player1);
@@ -111,6 +111,17 @@ namespace TennisKataTests
 
             game.Score.Should().Be("Game for Player2");
         }
+
+		[Test]
+		public void DeclarePlayer2AsWinnerWhenPlayer2IsInAdvantageAndScoreOnePoint()
+		{
+			SetDeuceScore();
+			game.AddPointTo(player2);
+
+			game.AddPointTo(player2);
+
+			game.Score.Should().Be("Game for Player2");
+		}
 
         private void SetDeuceScore()
         {
